@@ -1,0 +1,15 @@
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\bin\Debug\net8.0\agenda.exe
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\bin\Debug\net8.0\agenda.deps.json
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\bin\Debug\net8.0\agenda.runtimeconfig.json
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\bin\Debug\net8.0\agenda.dll
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\bin\Debug\net8.0\agenda.pdb
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\obj\Debug\net8.0\agenda.GeneratedMSBuildEditorConfig.editorconfig
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\obj\Debug\net8.0\agenda.AssemblyInfoInputs.cache
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\obj\Debug\net8.0\agenda.AssemblyInfo.cs
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\obj\Debug\net8.0\agenda.csproj.CoreCompileInputs.cache
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\obj\Debug\net8.0\agenda.sourcelink.json
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\obj\Debug\net8.0\agenda.dll
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\obj\Debug\net8.0\refint\agenda.dll
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\obj\Debug\net8.0\agenda.pdb
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\obj\Debug\net8.0\agenda.genruntimeconfig.cache
+C:\informatica\DAW1\programacio\programacions\agenda_ArturShakirov_PereRipoll\agenda_ArturShakirov-PereRipoll\agenda\obj\Debug\net8.0\ref\agenda.dll
