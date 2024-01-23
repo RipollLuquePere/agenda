@@ -19,42 +19,42 @@ do
             sortir = true;
             break;
         case '1':
-            textOpcio = "Donar d'alta usuari.";
+            textOpcio = "Donar d'alta usuari";
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
             Contador();
             break;
         case '2':
-            textOpcio = "Recuperar usuari.";
+            textOpcio = "Recuperar usuari";
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
             Contador();
             break;
         case '3':
-            textOpcio = "Modificar usuari.";
+            textOpcio = "Modificar usuari";
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
             Contador();
             break;
         case '4':
-            textOpcio = "Eliminar usuari.";
+            textOpcio = "Eliminar usuari";
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
             Contador();
             break;
         case '5':
-            textOpcio = "Mostrar agenda.";
+            textOpcio = "Mostrar agenda";
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
             Contador();
             break;
         case '6':
-            textOpcio = "Ordenar agenda.";
+            textOpcio = "Ordenar agenda";
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
@@ -95,7 +95,7 @@ do
         string capcelera;
 
         capcelera = "\x1b[43m\x1b[30m╔════════════════════════════════╗\n" +
-                    "║         \x1b[31mAGENDA\x1b[30m                 ║\n" +
+                    "║             \x1b[31mAGENDA\x1b[30m             ║\n" +
                     "╚════════════════════════════════╝\x1b[0m";
 
         return capcelera;
