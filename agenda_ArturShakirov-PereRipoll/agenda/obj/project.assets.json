@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\ArturSh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\informatica\\DAW1\\programacio\\programacions\\agenda_ArturShakirov_PereRipoll\\agenda_ArturShakirov-PereRipoll\\agenda\\agenda.csproj",
+      "projectUniqueName": "C:\\Users\\ArturSh\\Agenda_AShakirov-PRipoll\\agenda\\agenda_ArturShakirov-PereRipoll\\agenda\\agenda.csproj",
       "projectName": "agenda",
-      "projectPath": "C:\\informatica\\DAW1\\programacio\\programacions\\agenda_ArturShakirov_PereRipoll\\agenda_ArturShakirov-PereRipoll\\agenda\\agenda.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\informatica\\DAW1\\programacio\\programacions\\agenda_ArturShakirov_PereRipoll\\agenda_ArturShakirov-PereRipoll\\agenda\\obj\\",
+      "projectPath": "C:\\Users\\ArturSh\\Agenda_AShakirov-PRipoll\\agenda\\agenda_ArturShakirov-PereRipoll\\agenda\\agenda.csproj",
+      "packagesPath": "C:\\Users\\ArturSh\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ArturSh\\Agenda_AShakirov-PRipoll\\agenda\\agenda_ArturShakirov-PereRipoll\\agenda\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ArturSh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
