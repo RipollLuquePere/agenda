@@ -1,9 +1,6 @@
-﻿using System.Runtime.ExceptionServices;
-
-int num1, num2;
 bool sortir = false;
 char opcio;
-string textOpcio, nom, cognom1, cognom2, operador, DNI, correuElectronic, liniaIntroduir;
+string textOpcio, nom = "", cognom1 = "", cognom2, operador, DNI, correuElectronic, liniaIntroduir, opcioNoms;
 DateTime dataNaix;
 
 
@@ -26,22 +23,25 @@ do
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
-            Console.WriteLine("Introdueix el nom:");
-            nom = DemanarNoms();
-            Console.WriteLine("Introdueix el primer cognom:");
-            cognom1 = DemanarNoms();
-            Console.WriteLine("Introdueix el segon cognom:");
-            cognom2 = DemanarNoms();
+            Console.Write("\nIntrodueix el nom: ");
+            opcioNoms = "nom";
+            nom = DemanarNoms(opcioNoms);
+            opcioNoms = "primer cognom";
+            Console.Write("Introdueix el primer cognom: ");
+            cognom1 = DemanarNoms(opcioNoms);
+            opcioNoms = "c2";
+            Console.Write("Introdueix el segon cognom: ");
+            cognom2 = DemanarNoms(opcioNoms);
             DNI = DemanarDNI();
             dataNaix = DataNaix();
             correuElectronic = DemanarCorreu();
-            Console.WriteLine("Nom: "+nom);
-            Console.WriteLine("Cognom 1: "+cognom1);
-            Console.WriteLine("Cognom 2: "+cognom2);
-            Console.WriteLine("DNI: "+DNI);
-            Console.WriteLine("Data de naixement: "+dataNaix);//FALTA MOSTRAR EDAT ACTUAL AL COSTAT DE DATANAIX.
-            Console.WriteLine("Correu electronic: "+correuElectronic);
-            liniaIntroduir=nom+','+cognom1+','+cognom2+','+DNI+','+dataNaix+','+correuElectronic;
+            Console.WriteLine("Nom: " + nom);
+            Console.WriteLine("Primer cognom: " + cognom1);
+            Console.WriteLine("Segon cognom: " + cognom2);
+            Console.WriteLine("DNI: " + DNI);
+            Console.WriteLine("Data de naixement: " + dataNaix);//FALTA MOSTRAR EDAT ACTUAL AL COSTAT DE DATANAIX.
+            Console.WriteLine("Correu electronic: " + correuElectronic);
+            liniaIntroduir = nom + ',' + cognom1 + ',' + cognom2 + ',' + DNI + ',' + dataNaix + ',' + correuElectronic;
             EscripturaFitxer(liniaIntroduir);
             Contador();
             break;
@@ -151,11 +151,28 @@ do
             contador--;
         }
     }
-    static string DemanarNoms()
+
+    static string DemanarNoms(string opcioNoms)
     {
-        string operador;
-        char caracter = 'p';
+        string operador = "";
+        char caracter = ' ';
         operador = Console.ReadLine();
+        while (operador == "" && (opcioNoms == "nom" || opcioNoms == "primer cognom"))
+        {
+            Console.SetCursorPosition(0, Console.CursorTop - 1); // Mueve el cursor a la línea anterior
+            Console.Write("\r"+"Introdueix el " + opcioNoms + ": ");
+            operador = Console.ReadLine();
+        }
+        if (operador != "")
+        {
+            paraulaNeta(operador);
+        }
+        return operador;
+    }
+
+    static string paraulaNeta(string operador)
+    {
+        char caracter = ' ';
         operador = operador.ToLower();
         for (int cont = 0; cont < operador.Length - 1; cont++)
         {
@@ -169,16 +186,25 @@ do
         operador = operador.Substring(0, 1).ToUpper() + operador.Substring(1, operador.Length - 1);
         return operador;
     }
+
     static string DemanarDNI()
     {
-        string DNI = "nn";
+        string DNI = "";
         bool validat = false;
+        Console.Write("Introdueix el DNI:");
         while (!validat)
         {
-            Console.WriteLine("Introdueix el DNI:");
             DNI = Console.ReadLine();
-            DNI = DNI.ToUpper();
-            validat = ComprovarDNI(DNI);
+            if (DNI != "")
+            {
+                DNI = DNI.ToUpper();
+                validat = ComprovarDNI(DNI);
+            }
+            else
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1); // Mueve el cursor a la línea anterior
+                Console.Write("\r" + "Introdueix el DNI: ");
+            }
         }
         return DNI;
     }
@@ -188,7 +214,6 @@ do
         char lletraIntroduida, lletraCorrecte = 'Z';
         bool validat = false;
         lletraIntroduida = DNI[DNI.Length - 1];
-        Console.WriteLine(lletraIntroduida);
         numDNI = Convert.ToInt32(DNI.Substring(0, DNI.Length - 1));
         numDNI = numDNI % 23;
         switch (numDNI)
@@ -266,7 +291,6 @@ do
         if (lletraCorrecte == lletraIntroduida)
         {
             validat = true;
-            Console.WriteLine("DNI correcte.");
         }
         else Console.WriteLine("DNI incorrecte, s'haura de tornar a introduir.");
         return validat;
@@ -364,12 +388,12 @@ do
         }
         return valid;
     }
-    static string DemanarCorreu ()
+    static string DemanarCorreu()
     {
-        string correu="", operador, original="";
-        char caracter=' ';
+        string correu = "", operador, original = "";
+        char caracter = ' ';
         bool valid = false;
-        int contCaracters=0;
+        int contCaracters = 0;
         while (!valid)
         {//VALIDAR S'HAURIA DE FER AMB REGEX, ARA FUNCIONA PERO NO ESTA FET AMB REGEX.
             valid = false;
@@ -377,32 +401,32 @@ do
             correu = Console.ReadLine();
             original = correu;
             operador = correu.Substring(0, correu.IndexOf('@')).ToLower();
-            for (int cont = 0; cont < operador.Length&&contCaracters<3; cont++)
+            for (int cont = 0; cont < operador.Length && contCaracters < 3; cont++)
             {
                 caracter = operador[cont];
                 contCaracters++;
             }
             if (contCaracters >= 3)
                 valid = true;
-            correu = correu.Substring(correu.IndexOf('@')+1);
+            correu = correu.Substring(correu.IndexOf('@') + 1);
             contCaracters = 0;
             operador = correu.Substring(0, correu.IndexOf('.')).ToLower();
-            for (int cont=0; cont<operador.Length&&contCaracters<3&&valid; cont++)
+            for (int cont = 0; cont < operador.Length && contCaracters < 3 && valid; cont++)
             {
                 caracter = operador[cont];
                 if (caracter >= 'a' && caracter <= 'z')
                     contCaracters++;
                 else valid = false;
             }
-            if (contCaracters < 3&&valid)
+            if (contCaracters < 3 && valid)
                 valid = false;
-            correu = correu.Substring(correu.IndexOf('.')+1);
+            correu = correu.Substring(correu.IndexOf('.') + 1);
             if (correu != "com" && correu != "es" && correu != "cat" && valid)
                 valid = false;
         }
         return original;
     }
-    static void EscripturaFitxer (string liniaIntroduir)
+    static void EscripturaFitxer(string liniaIntroduir)
     {
         StreamWriter fitxerSW;
         fitxerSW = new StreamWriter("agenda.txt", true);
