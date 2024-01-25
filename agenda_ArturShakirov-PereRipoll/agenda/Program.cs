@@ -405,18 +405,8 @@ do
     static void EscripturaFitxer (string liniaIntroduir)
     {
         StreamWriter fitxerSW;
-        StreamReader fitxerSR;
-        string contingutFitxerOriginal="", linia;
-        fitxerSR = new StreamReader("agenda.txt");
-        while (!fitxerSR.EndOfStream)
-        {
-            linia = fitxerSR.ReadLine();
-            contingutFitxerOriginal = contingutFitxerOriginal + '\r' + linia;
-        }
-        fitxerSR.Close();
-        contingutFitxerOriginal = contingutFitxerOriginal + '\r'+liniaIntroduir;
-        fitxerSW = new StreamWriter("agenda.txt");
-        fitxerSW.WriteLine(contingutFitxerOriginal);
+        fitxerSW = new StreamWriter("agenda.txt", true);
+        fitxerSW.WriteLine(liniaIntroduir);
         fitxerSW.Close();
     }
 
