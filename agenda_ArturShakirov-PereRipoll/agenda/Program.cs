@@ -1,6 +1,6 @@
 bool sortir = false;
 char opcio;
-string textOpcio, nom = "", cognom1 = "", cognom2, operador, DNI, correuElectronic, liniaIntroduir, opcioNoms;
+string textOpcio, nom = "", cognom1 = "", cognom2, operador, DNI, correuElectronic, liniaIntroduir, opcioNoms, liniaFitxer;
 DateTime dataNaix;
 
 
@@ -26,6 +26,7 @@ do
             Console.Write("\nIntrodueix el nom: ");
             opcioNoms = "nom";
             nom = DemanarNoms(opcioNoms);
+            Console.WriteLine(nom);
             opcioNoms = "primer cognom";
             Console.Write("Introdueix el primer cognom: ");
             cognom1 = DemanarNoms(opcioNoms);
@@ -35,13 +36,8 @@ do
             DNI = DemanarDNI();
             dataNaix = DataNaix();
             correuElectronic = DemanarCorreu();
-            Console.WriteLine("Nom: " + nom);
-            Console.WriteLine("Primer cognom: " + cognom1);
-            Console.WriteLine("Segon cognom: " + cognom2);
-            Console.WriteLine("DNI: " + DNI);
-            Console.WriteLine("Data de naixement: " + dataNaix);//FALTA MOSTRAR EDAT ACTUAL AL COSTAT DE DATANAIX.
-            Console.WriteLine("Correu electronic: " + correuElectronic);
             liniaIntroduir = nom + ',' + cognom1 + ',' + cognom2 + ',' + DNI + ',' + dataNaix + ',' + correuElectronic;
+            MostrarElements(liniaIntroduir, textOpcio);
             EscripturaFitxer(liniaIntroduir);
             Contador();
             break;
@@ -50,6 +46,15 @@ do
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
+            Console.Write("Introdueix un el nom de l'usuari que vols recuperar:");
+            opcioNoms = "nom";
+            nom=AutocompletarNoms(textOpcio);
+            liniaFitxer = BuscarLiniaFitxer(nom, opcioNoms, textOpcio);
+            if (liniaFitxer != "")
+            {
+                liniaIntroduir = liniaFitxer;
+                MostrarElements(liniaIntroduir, textOpcio);
+            }
             Contador();
             break;
         case '3':
@@ -160,12 +165,12 @@ do
         while (operador == "" && (opcioNoms == "nom" || opcioNoms == "primer cognom"))
         {
             Console.SetCursorPosition(0, Console.CursorTop - 1); // Mueve el cursor a la línea anterior
-            Console.Write("\r"+"Introdueix el " + opcioNoms + ": ");
+            Console.Write("\r" + "Introdueix el " + opcioNoms + ": ");
             operador = Console.ReadLine();
         }
         if (operador != "")
         {
-            paraulaNeta(operador);
+            operador = paraulaNeta(operador);
         }
         return operador;
     }
@@ -432,6 +437,113 @@ do
         fitxerSW = new StreamWriter("agenda.txt", true);
         fitxerSW.WriteLine(liniaIntroduir);
         fitxerSW.Close();
+    }
+    static string BuscarLiniaFitxer(string nom, string opcioNoms, string textOpcio)
+    {
+        StreamReader fitxerSR;
+        string liniaFitxer = "", auxiliar;
+        bool trobat = false;
+        char decisiu = 'n';
+        while (!trobat)
+        {
+            fitxerSR = new StreamReader("agenda.txt");
+            while (!trobat && !fitxerSR.EndOfStream)
+            {
+                liniaFitxer = fitxerSR.ReadLine();
+                auxiliar = liniaFitxer.Substring(0, liniaFitxer.IndexOf(','));
+                if (auxiliar == nom)
+                    trobat = true;
+            }
+            fitxerSR.Close();
+            if (!trobat)
+            {
+                Console.Clear();
+                Console.WriteLine(Capcelera());
+                Console.WriteLine(CapceleraOpcio(textOpcio));
+                Console.Write("El nom introduit no esta a l'agenda vols introduir-ne un altre? Introdueix una 's', per introduir-ne un altre i una 'n' per no fer-ho.");
+                decisiu = Console.ReadKey().KeyChar;
+                Console.Clear();
+                Console.WriteLine(Capcelera());
+                Console.WriteLine(CapceleraOpcio(textOpcio));
+                if (decisiu == 's' || decisiu == 'S')
+                {
+                    Console.WriteLine("Nom: ");
+                    nom = AutocompletarNoms(textOpcio);
+                }
+                else
+                {
+                    trobat = true;
+                    liniaFitxer = "";
+                }
+            }
+        }
+        return liniaFitxer;
+    }
+    static void MostrarElements(string liniaIntroduir, string textOpcio)
+    {
+        Console.Clear();
+        Console.WriteLine(Capcelera());
+        Console.WriteLine(CapceleraOpcio(textOpcio));
+        Console.WriteLine("Nom= " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
+        Console.WriteLine("Cognom 1= " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
+        Console.WriteLine("Cognom 2= " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
+        Console.WriteLine("DNI= " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
+        Console.WriteLine("Data de naixement= " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
+        Console.WriteLine("Correu electrònic= " + liniaIntroduir);
+    }
+    static string AutocompletarNoms(string textOpcio)
+    {
+        StreamReader fitxerSR;
+        char caracterActual;
+        string nom = "", nomsPossibles = "/", nomLinia;
+        bool igual = true, sortida=false;
+        int cont = 0;
+        while (nom != nomsPossibles&&!sortida)
+        {
+            nomsPossibles = "";
+            caracterActual = Console.ReadKey().KeyChar;
+            nom = nom + caracterActual;
+            if (nom.Length == 1)
+                nom = nom.ToUpper();
+            fitxerSR = new StreamReader("agenda.txt");
+            while (!fitxerSR.EndOfStream)
+            {
+                igual = true;
+                nomLinia = fitxerSR.ReadLine();
+                nomLinia = nomLinia.Substring(0, nomLinia.IndexOf(','));
+                for (int i = 0; i != nom.Length && igual; i++)
+                {
+                    if (nomLinia[i] != nom[i])
+                        igual = false;
+                }
+                if (igual)
+                {
+                    nomsPossibles = nomsPossibles + nomLinia+'/';
+                    cont++;
+                }
+            }
+            fitxerSR.Close();
+            Console.Clear();
+            Console.WriteLine(Capcelera());
+            Console.WriteLine(CapceleraOpcio(textOpcio));
+            Console.WriteLine("Nom: ");
+            Console.WriteLine(nom);
+            if (cont == 0)
+            {
+                Console.WriteLine("No coincideix cap nom amb el que s'ha introduit.");
+                sortida = true;
+            }
+            else Console.WriteLine("Noms possibles: " + nomsPossibles);
+            cont = 0;
+            if (!sortida)
+                nomsPossibles = nomsPossibles.Substring(0, nomsPossibles.IndexOf('/'));
+        }
+        return nom;
     }
 
 } while (!sortir);
