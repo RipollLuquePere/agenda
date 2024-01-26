@@ -58,7 +58,6 @@ do
                 liniaIntroduir = liniaFitxer;
                 MostrarElements(liniaIntroduir, textOpcio);
             }
-            Contador();
             break;
         case '3':
             textOpcio = "Modificar usuari.";
@@ -607,6 +606,7 @@ do
             {
                 Console.WriteLine("No coincideix cap nom amb el que s'ha introduit.");
                 sortida = true;
+                Contador();
             }
             else Console.Write("Possibles noms: " + nomsPossibles);
             cont = 0;

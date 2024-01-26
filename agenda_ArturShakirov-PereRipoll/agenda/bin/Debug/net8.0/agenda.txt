@@ -9,3 +9,4 @@ Pere,Ripoll,Luque,41581028H,634758532,18/12/1997 0:00:00,pereriluq@gmail.com
 Joan,Gran,Petit,41581028H,673784523,03/12/1992 0:00:00,joangranpetit@gmail.com
 Tomas,Monte,Fuster,41581028H,653554372,25/11/1978 0:00:00,tomasmontefuster@gmail.com
 Manel,Ferrer,Serrat,41581028H,608827630,24/11/1967 0:00:00,manelferrerserrat@gmail.com
+D,D,,41581028H,437658364,12/12/2023,arturshakirov@gmail.com
