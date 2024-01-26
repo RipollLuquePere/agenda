@@ -1,9 +1,8 @@
-using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 
 bool sortir = false;
 char opcio;
-string textOpcio, nom = "", cognom1 = "", cognom2, operador, DNI, telefon, correuElectronic, liniaIntroduir, opcioNoms, liniaFitxer;
+string textOpcio, nom = "", cognom1 = "", cognom2, operador, DNI, telefon, correuElectronic, liniaIntroduir, opcioNoms, liniaFitxer, dadaModificar;
 DateTime dataNaix;
 
 
@@ -58,12 +57,23 @@ do
                 liniaIntroduir = liniaFitxer;
                 MostrarElements(liniaIntroduir, textOpcio);
             }
+            Contador();
             break;
         case '3':
             textOpcio = "Modificar usuari.";
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
+            Console.Write("\nIntrodueix un el nom de l'usuari que vols modificar:");
+            opcioNoms = "nom";
+            nom = AutocompletarNoms(textOpcio);
+            liniaFitxer = BuscarLiniaFitxer(nom, opcioNoms, textOpcio);
+            if (liniaFitxer != "")
+            {
+                liniaIntroduir = liniaFitxer;
+                MostrarElements(liniaIntroduir, textOpcio);
+            }
+            DadaModificar(liniaFitxer, opcioNoms);
             Contador();
             break;
         case '4':
@@ -614,6 +624,123 @@ do
                 nomsPossibles = nomsPossibles.Substring(0, nomsPossibles.IndexOf('/'));
         }
         return nom;
+    }
+    static void DadaModificar(string liniaFitxer, string opcioNoms)
+    {
+        StreamReader fitxerSR;
+        string modificacio = "", liniaAuxiliar, dadaModificar = "", liniaActual="";
+        int cont = 0, auxiliar=-1;
+        DateTime dataNaix = DateTime.Today;
+        bool trobat = false, sortida=false;
+        liniaAuxiliar = liniaFitxer;
+        fitxerSR = new StreamReader("agenda.txt");
+        while (!fitxerSR.EndOfStream&&!sortida)
+        {
+            liniaActual = fitxerSR.ReadLine();
+            auxiliar++;
+            if (liniaActual == liniaFitxer)
+                sortida = true;
+        }
+        fitxerSR.Close();
+        Console.WriteLine("Introdueix el nom de la dada que vols modificar, a escollir entre les mostrades a la part superior: ");
+        while (!trobat)
+        {
+            dadaModificar = Console.ReadLine();
+            dadaModificar = dadaModificar.ToLower();
+            if (dadaModificar == "nom")
+            {
+                Console.WriteLine("Introdueix el nou valor per a la dada Nom:");
+                opcioNoms = "nom";
+                modificacio = DemanarNoms(opcioNoms);
+                trobat = true;
+                cont = 0;
+            }
+            else if (dadaModificar == "cognom1" || dadaModificar == "cognom 1")
+            {
+                Console.WriteLine("Introdueix el nou valor per a la dada Cognom 1:");
+                opcioNoms = "primer cognom";
+                modificacio = DemanarNoms(opcioNoms);
+                trobat = true;
+                cont = 1;
+            }
+            else if (dadaModificar == "cognom2" || dadaModificar == "cognom 2")
+            {
+                Console.WriteLine("Introdueix el nou valor per a la dada Cognom 2:");
+                opcioNoms = "c2";
+                modificacio = DemanarNoms(opcioNoms);
+                trobat = true;
+                cont = 2;
+            }
+            else if (dadaModificar == "dni")
+            {
+                modificacio = DemanarDNI();
+                trobat = true;
+                cont = 3;
+            }
+            else if (dadaModificar == "telefon")
+            {
+                modificacio = DemanarTlf();
+                trobat = true;
+                cont = 4;
+            }
+            else if (dadaModificar == "datanaixement" || dadaModificar == "data naixement")
+            {
+                dataNaix = DataNaix();
+                trobat = true;
+                cont = 5;
+            }
+            else if (dadaModificar == "correuelectronic" || dadaModificar == "correu electronic")
+            {
+                modificacio = DemanarCorreu();
+                trobat = true;
+                cont = 6;
+            }
+            else Console.WriteLine("La opcio introduida no correspon a cap dada, introdueix-ne una altre que sigui correcte.");
+        }
+        Console.WriteLine(liniaFitxer);
+        liniaFitxer = "";
+        for (int i = 0; liniaAuxiliar.Contains('@'); i++)
+        {
+            if (i != cont)
+            {
+                if (liniaAuxiliar.Contains(','))
+                    liniaFitxer = liniaFitxer + liniaAuxiliar.Substring(0, liniaAuxiliar.IndexOf(',')) + ',';
+                else
+                {
+                    if (dadaModificar != "correuelectronic" && dadaModificar != "correu electronic")
+                        liniaFitxer = liniaFitxer + liniaAuxiliar;
+                    else liniaFitxer = liniaFitxer.Substring(0, liniaFitxer.Length - 1);
+                    liniaAuxiliar = "";
+                }
+            }
+            else
+            {
+                if (dadaModificar == "datanaixement" || dadaModificar == "data naixement")
+                    liniaFitxer = liniaFitxer + dataNaix + ',';
+                else liniaFitxer = liniaFitxer + modificacio + ',';
+            }
+            liniaAuxiliar = liniaAuxiliar.Substring(liniaAuxiliar.IndexOf(',') + 1);
+        }
+        EntrarModificacions(auxiliar, liniaFitxer);
+    }
+    static void EntrarModificacions (int auxiliar, string liniaFitxer)
+    {
+        StreamReader fitxerSR;
+        StreamWriter fitxerSW;
+        Console.WriteLine(auxiliar);
+        string liniaEscriure="", liniaTotal="";
+        fitxerSR = new StreamReader("agenda.txt");
+        for (int i = 0; !fitxerSR.EndOfStream; i++)
+        {
+            liniaEscriure = fitxerSR.ReadLine();
+            if (auxiliar != i)
+                liniaTotal = liniaTotal + liniaEscriure + '\n';
+            else liniaTotal = liniaTotal + liniaFitxer + '\n';
+        }
+        fitxerSR.Close();
+        fitxerSW = new StreamWriter("agenda.txt");
+        fitxerSW.WriteLine(liniaTotal);
+        fitxerSW.Close();
     }
 
 } while (!sortir);
