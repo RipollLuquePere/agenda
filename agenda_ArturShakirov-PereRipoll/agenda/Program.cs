@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 
 bool sortir = false;
-char opcio;
+char opcio, caracterDecisio;
 string textOpcio, nom = "", cognom1 = "", cognom2, operador, DNI, telefon, correuElectronic, liniaIntroduir, opcioNoms, liniaFitxer, dadaModificar;
 DateTime dataNaix;
 
@@ -48,7 +48,7 @@ do
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
-            Console.Write("\nIntrodueix un el nom de l'usuari que vols recuperar:");
+            Console.Write("\nIntrodueix el nom de l'usuari que vols recuperar:");
             opcioNoms = "nom";
             nom = AutocompletarNoms(textOpcio);
             liniaFitxer = BuscarLiniaFitxer(nom, opcioNoms, textOpcio);
@@ -64,7 +64,24 @@ do
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
-            Console.Write("Introdueix un el nom de l'usuari que vols modificar:");
+            Console.Write("Introdueix el nom de l'usuari que vols modificar:");
+            opcioNoms = "nom";
+            nom = AutocompletarNoms(textOpcio);
+            liniaFitxer = BuscarLiniaFitxer(nom, opcioNoms, textOpcio);
+            if (liniaFitxer != "")
+            {
+                liniaIntroduir = liniaFitxer;
+                MostrarElements(liniaIntroduir, textOpcio);
+                DadaModificar(liniaFitxer, opcioNoms);
+            }          
+            Contador();
+            break;
+        case '4':
+            textOpcio = "Eliminar usuari.";
+            Console.Clear();
+            Console.WriteLine(Capcelera());
+            Console.WriteLine(CapceleraOpcio(textOpcio));
+            Console.Write("\nIntrodueix el nom de l'usuari que vols eliminar:");
             opcioNoms = "nom";
             nom = AutocompletarNoms(textOpcio);
             liniaFitxer = BuscarLiniaFitxer(nom, opcioNoms, textOpcio);
@@ -73,14 +90,10 @@ do
                 liniaIntroduir = liniaFitxer;
                 MostrarElements(liniaIntroduir, textOpcio);
             }
-            DadaModificar(liniaFitxer, opcioNoms);
-            Contador();
-            break;
-        case '4':
-            textOpcio = "Eliminar usuari.";
-            Console.Clear();
-            Console.WriteLine(Capcelera());
-            Console.WriteLine(CapceleraOpcio(textOpcio));
+            Console.WriteLine("\nEstas segur d'eliminar l'usuari que es mostra en pantalla? (s/n):");
+            caracterDecisio = Console.ReadKey().KeyChar;
+            if (caracterDecisio == 's' || caracterDecisio == 'S')
+                EliminarUsuari(liniaFitxer);
             Contador();
             break;
         case '5':
@@ -733,17 +746,44 @@ do
         Console.WriteLine(auxiliar);
         string liniaEscriure = "", liniaTotal = "";
         fitxerSR = new StreamReader("agenda.txt");
+        liniaEscriure = fitxerSR.ReadLine();
         for (int i = 0; !fitxerSR.EndOfStream; i++)
-        {
-            liniaEscriure = fitxerSR.ReadLine();
+        {           
             if (auxiliar != i)
-                liniaTotal = liniaTotal + liniaEscriure + '\n';
-            else liniaTotal = liniaTotal + liniaFitxer + '\n';
+                liniaTotal = liniaTotal + liniaEscriure;
+            else liniaTotal = liniaTotal + liniaFitxer;
+            liniaEscriure = fitxerSR.ReadLine();
+            if (liniaEscriure != "")
+                liniaTotal = liniaTotal + '\n';
         }
+        if (liniaEscriure != "")
+            liniaTotal = liniaTotal + liniaEscriure;
         fitxerSR.Close();
         fitxerSW = new StreamWriter("agenda.txt");
         fitxerSW.WriteLine(liniaTotal);
         fitxerSW.Close();
     }
-
+    static void EliminarUsuari (string liniaFitxer)
+    {
+        StreamReader fitxerSR;
+        StreamWriter fitxerSW;
+        string liniaEscriure, textFitxer="", auxiliar;
+        fitxerSR = new StreamReader("agenda.txt");
+        liniaEscriure = fitxerSR.ReadLine();
+        while (!fitxerSR.EndOfStream)
+        {
+            auxiliar = liniaEscriure;
+            if (liniaFitxer!=liniaEscriure)
+                textFitxer = textFitxer + liniaEscriure;
+            liniaEscriure = fitxerSR.ReadLine();
+            if (liniaEscriure != ""&&liniaEscriure!=liniaFitxer)
+                textFitxer = textFitxer + "\n";
+        }
+        if (liniaEscriure != "" && liniaEscriure != liniaFitxer)
+            textFitxer = textFitxer + liniaEscriure+'\n';
+        fitxerSR.Close();
+        fitxerSW = new StreamWriter("agenda.txt");
+        fitxerSW.Write(textFitxer);
+        fitxerSW.Close();
+    }
 } while (!sortir);
