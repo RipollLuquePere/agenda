@@ -1,9 +1,10 @@
 ﻿using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 
+double edat;
 bool sortir = false;
 char opcio;
-string textOpcio, nom = "", cognom1 = "", cognom2, operador, DNI, telefon, correuElectronic, liniaIntroduir, liniaFitxer, opcioNoms;
+string textOpcio, nom, cognom1, cognom2, operador, DNI, telefon, correuElectronic, liniaIntroduir, liniaFitxer, opcioNoms;
 DateTime dataNaix;
 
 
@@ -47,7 +48,8 @@ do
             Console.WriteLine("Data de naixement: " + dataNaix);//FALTA MOSTRAR EDAT ACTUAL AL COSTAT DE DATANAIX.
             Console.WriteLine("Correu electronic: " + correuElectronic);
             liniaIntroduir = nom + ',' + cognom1 + ',' + cognom2 + ',' + DNI + ',' + dataNaix + ',' + correuElectronic;
-            MostrarElements(liniaIntroduir, textOpcio);
+            edat = CalcularEdat(dataNaix);
+            MostrarElements(liniaIntroduir, textOpcio, edat);
             EscripturaFitxer(liniaIntroduir);
             Contador();
             break;
@@ -351,6 +353,7 @@ do
 
     static DateTime DataNaix()
     {
+        double edat;
         DateTime dataNaix = DateTime.Now;
         bool validat = false;
         int any = DateTime.Now.Year + 1, mes = 0, dia = 0;
@@ -413,6 +416,16 @@ do
         }
         return dataNaix;
     }
+
+    static double CalcularEdat(DateTime dataNaix)
+    {
+        double edat;
+
+        edat = Math.Truncate(Math.Round((DateTime.Now.Date - dataNaix.Date).Days / 365.25, 2));
+        return edat;
+    }
+
+
     static bool ComprovacioDataNaix(DateTime dataNaix)
     {
         int any, mes, dia;
