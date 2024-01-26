@@ -64,7 +64,7 @@ do
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
-            Console.Write("\nIntrodueix un el nom de l'usuari que vols modificar:");
+            Console.Write("Introdueix un el nom de l'usuari que vols modificar:");
             opcioNoms = "nom";
             nom = AutocompletarNoms(textOpcio);
             liniaFitxer = BuscarLiniaFitxer(nom, opcioNoms, textOpcio);
@@ -594,16 +594,19 @@ do
             {
                 igual = true;
                 nomLinia = fitxerSR.ReadLine();
-                nomLinia = nomLinia.Substring(0, nomLinia.IndexOf(','));
-                for (int i = 0; i != nom.Length && igual; i++)
+                if (nomLinia != "")
                 {
-                    if (nomLinia[i] != nom[i])
-                        igual = false;
-                }
-                if (igual)
-                {
-                    nomsPossibles = nomsPossibles + nomLinia + '/';
-                    cont++;
+                    nomLinia = nomLinia.Substring(0, nomLinia.IndexOf(','));
+                    for (int i = 0; i != nom.Length && igual; i++)
+                    {
+                        if (nomLinia[i] != nom[i])
+                            igual = false;
+                    }
+                    if (igual)
+                    {
+                        nomsPossibles = nomsPossibles + nomLinia + '/';
+                        cont++;
+                    }
                 }
             }
             fitxerSR.Close();
@@ -628,13 +631,13 @@ do
     static void DadaModificar(string liniaFitxer, string opcioNoms)
     {
         StreamReader fitxerSR;
-        string modificacio = "", liniaAuxiliar, dadaModificar = "", liniaActual="";
-        int cont = 0, auxiliar=-1;
+        string modificacio = "", liniaAuxiliar, dadaModificar = "", liniaActual = "";
+        int cont = 0, auxiliar = -1;
         DateTime dataNaix = DateTime.Today;
-        bool trobat = false, sortida=false;
+        bool trobat = false, sortida = false;
         liniaAuxiliar = liniaFitxer;
         fitxerSR = new StreamReader("agenda.txt");
-        while (!fitxerSR.EndOfStream&&!sortida)
+        while (!fitxerSR.EndOfStream && !sortida)
         {
             liniaActual = fitxerSR.ReadLine();
             auxiliar++;
@@ -723,12 +726,12 @@ do
         }
         EntrarModificacions(auxiliar, liniaFitxer);
     }
-    static void EntrarModificacions (int auxiliar, string liniaFitxer)
+    static void EntrarModificacions(int auxiliar, string liniaFitxer)
     {
         StreamReader fitxerSR;
         StreamWriter fitxerSW;
         Console.WriteLine(auxiliar);
-        string liniaEscriure="", liniaTotal="";
+        string liniaEscriure = "", liniaTotal = "";
         fitxerSR = new StreamReader("agenda.txt");
         for (int i = 0; !fitxerSR.EndOfStream; i++)
         {
