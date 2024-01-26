@@ -1,1 +1,16 @@
-Pere,Ripoll,Luque,41581028H,18/12/1997 0:00:00,pereriluq@gmail.comPere,Ripoll,Luque,41581028H,18/12/1997 0:00:00,pereriluq@gmail.comPere,Ripoll,Luque,41581028H,18/12/1997 0:00:00,pereriluq@gmail.comPere,Ripoll,Luque,41581028H,12/12/2005 0:00:00,arturiussicarius@gmail.comHola,Hola,,41581028H,21/08/2019 0:00:00,holaqtal@gmail.comArtur,Shakirov,,41581028H,18/12/1997 0:00:00,pereriluq@gmail.comPere,Ripoll,Luque,41581028H,18/12/1997 0:00:00,pereriluq@gmail.comA,sh,,41581028H,08/12/1994 0:00:00,mkmeckm@gmail.catd,d,d,41581028H,12/12/2005 0:00:00,arturshakirov@gmail.comHola ,Adeu8745-.,,,41581028H,12/12/1995 0:00:00,holaadeu@institutmontilivi.catHola4,Adeu-,,41581028H,12/12/1995 0:00:00,holadeu@gmail.comHola,Adeu,,41581028H,12/12/1995 0:00:00,holaadeu@gmail.comD,D,,41581028H,12/12/1995 0:00:00,D,D,D,41581028H,12/12/1995 0:00:00,art@gmail.com
+<<<<<<< HEAD
+Pere,Ripoll,Luque,41581028H,18/12/1997 0:00:00,pereriluq@gmail.comPere,Ripoll,Luque,41581028H,18/12/1997 0:00:00,pereriluq@gmail.comPere,Ripoll,Luque,41581028H,18/12/1997 0:00:00,pereriluq@gmail.comPere,Ripoll,Luque,41581028H,12/12/2005 0:00:00,arturiussicarius@gmail.comHola,Hola,,41581028H,21/08/2019 0:00:00,holaqtal@gmail.comArtur,Shakirov,,41581028H,18/12/1997 0:00:00,pereriluq@gmail.comPere,Ripoll,Luque,41581028H,18/12/1997 0:00:00,pereriluq@gmail.comA,sh,,41581028H,08/12/1994 0:00:00,mkmeckm@gmail.catd,d,d,41581028H,12/12/2005 0:00:00,arturshakirov@gmail.comHola ,Adeu8745-.,,,41581028H,12/12/1995 0:00:00,holaadeu@institutmontilivi.catHola4,Adeu-,,41581028H,12/12/1995 0:00:00,holadeu@gmail.comHola,Adeu,,41581028H,12/12/1995 0:00:00,holaadeu@gmail.comD,D,,41581028H,12/12/1995 0:00:00,D,D,D,41581028H,12/12/1995 0:00:00,art@gmail.com
+=======
+Marc,Talos,Volca,12345678F,615246745,12/11/2001 0:00:00,marctalosvolca@gmail.com
+Pere,Ripoll,Luque,41581028H,672388754,18/12/1997 0:00:00,pereriluq@gmail.com
+Pere,Ripoll,Luque,41581028H,672364854,18/12/1997 0:00:00,pereriluq@gmail.com
+Pere,Ripoll,Luque,41581028H,615354753,18/12/1997 0:00:00,pereriluq@gmail.com
+Pera,Ripoll,Luque,41581028H,623475735,12/12/2005 0:00:00,arturiussicarius@gmail.com
+Hola,Adeu,,41581028H,612847885,21/08/2019 0:00:00,holaqtal@gmail.com
+Artur,Shakirov,,41581028H,676881557,18/12/1997 0:00:00,pereriluq@gmail.com
+Pere,Ripoll,Luque,41581028H,634758532,18/12/1997 0:00:00,pereriluq@gmail.com
+Joan,Gran,Petit,41581028H,673784523,03/12/1992 0:00:00,joangranpetit@gmail.com
+Tomas,Monte,Fuster,41581028H,653554372,25/11/1978 0:00:00,tomasmontefuster@gmail.com
+Manel,Ferrer,Serrat,41581028H,608827630,24/11/1967 0:00:00,manelferrerserrat@gmail.com
+D,D,,41581028H,437658364,12/12/2023,arturshakirov@gmail.com
+>>>>>>> develop

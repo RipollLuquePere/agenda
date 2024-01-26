@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 
@@ -5,6 +6,14 @@ double edat;
 bool sortir = false;
 char opcio;
 string textOpcio, nom, cognom1, cognom2, operador, DNI, telefon, correuElectronic, liniaIntroduir, liniaFitxer, opcioNoms;
+=======
+using System.Linq.Expressions;
+using System.Text.RegularExpressions;
+
+bool sortir = false;
+char opcio;
+string textOpcio, nom = "", cognom1 = "", cognom2, operador, DNI, telefon, correuElectronic, liniaIntroduir, opcioNoms, liniaFitxer;
+>>>>>>> develop
 DateTime dataNaix;
 
 
@@ -29,6 +38,10 @@ do
             Console.WriteLine(CapceleraOpcio(textOpcio));
             opcioNoms = "nom";
             Console.Write("\nIntrodueix el nom: ");
+<<<<<<< HEAD
+=======
+            opcioNoms = "nom";
+>>>>>>> develop
             nom = DemanarNoms(opcioNoms);
             opcioNoms = "primer cognom";
             Console.Write("Introdueix el primer cognom: ");
@@ -40,6 +53,7 @@ do
             telefon = DemanarTlf();
             dataNaix = DataNaix();
             correuElectronic = DemanarCorreu();
+<<<<<<< HEAD
             Console.WriteLine("Nom: " + nom);
             Console.WriteLine("Primer cognom: " + cognom1);
             Console.WriteLine("Segon cognom: " + cognom2);
@@ -50,6 +64,10 @@ do
             liniaIntroduir = nom + ',' + cognom1 + ',' + cognom2 + ',' + DNI + ',' + dataNaix + ',' + correuElectronic;
             edat = CalcularEdat(dataNaix);
             MostrarElements(liniaIntroduir, textOpcio, edat);
+=======
+            liniaIntroduir = nom + ',' + cognom1 + ',' + cognom2 + ',' + DNI + ',' + telefon + ',' + dataNaix.ToString("d") + ',' + correuElectronic;
+            MostrarElements(liniaIntroduir, textOpcio);
+>>>>>>> develop
             EscripturaFitxer(liniaIntroduir);
             Contador();
             break;
@@ -58,16 +76,25 @@ do
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
+<<<<<<< HEAD
             Console.Write("Introdueix un el nom de l'usuari que vols recuperar:");
             opcioNoms = "nom";
             nom = AutocompletarNoms(textOpcio);
+=======
+            Console.Write("\nIntrodueix un el nom de l'usuari que vols recuperar:");
+            opcioNoms = "nom";
+            nom=AutocompletarNoms(textOpcio);
+>>>>>>> develop
             liniaFitxer = BuscarLiniaFitxer(nom, opcioNoms, textOpcio);
             if (liniaFitxer != "")
             {
                 liniaIntroduir = liniaFitxer;
                 MostrarElements(liniaIntroduir, textOpcio);
             }
+<<<<<<< HEAD
             Contador();
+=======
+>>>>>>> develop
             break;
         case '3':
             textOpcio = "Modificar usuari.";
@@ -179,7 +206,11 @@ do
         while (operador == "" && (opcioNoms == "nom" || opcioNoms == "primer cognom"))
         {
             Console.SetCursorPosition(0, Console.CursorTop - 1); // Mueve el cursor a la línea anterior
+<<<<<<< HEAD
             Console.Write("\r"+"Introdueix el " + opcioNoms + ": ");
+=======
+            Console.Write("\r" + "Introdueix el " + opcioNoms + ": ");
+>>>>>>> develop
             operador = Console.ReadLine();
         }
         if (operador != "")
@@ -203,14 +234,27 @@ do
     {
         string DNI = "";
         bool validat = false;
+<<<<<<< HEAD
+=======
+        Regex regex = new Regex(@"^\d{8}[a-z]$");
+
+>>>>>>> develop
         Console.Write("Introdueix el DNI: ");
         while (!validat)
         {
             DNI = Console.ReadLine();
             if (DNI != "")
             {
+<<<<<<< HEAD
                 DNI = DNI.ToUpper();
                 validat = ComprovarDNI(DNI);
+=======
+                if (regex.IsMatch(DNI))
+                {
+                    DNI = DNI.ToUpper();
+                    validat = ComprovarDNI(DNI);
+                }
+>>>>>>> develop
 
                 if (!validat)
                 {
@@ -314,9 +358,51 @@ do
     }
 
     static string DemanarTlf()
+<<<<<<< HEAD
+=======
     {
         string telefon = "";
         bool validat = false;
+
+        Console.Write("Introdueix el telefon: ");
+        while (!validat)
+        {
+            telefon = Console.ReadLine();
+
+            if (telefon != "")
+            {
+                validat = ValidarTlf(telefon);
+
+                if (!validat)
+                {
+                    Console.WriteLine("Telefon incorrecte.");
+                    Console.Write("Introdueix el telefon: ");
+                }
+            }
+            else
+            {
+                Console.SetCursorPosition(0, Console.CursorTop - 1); // Mueve el cursor a la línea anterior
+                Console.Write("\r" + "Introdueix el telefon: ");
+            }
+        }
+        return telefon;
+    }
+
+    static bool ValidarTlf(string telefon)
+    {
+        // Utilizem una expressió Regex per verificar si el telefon es valid
+        // ^ indica el començament de la cadena, \d indica un dígit, {9} especifica la quantitat de dígits, en aquest cas 9, $ indica el final de la cadena
+        Regex regex = new Regex(@"^\d{9}$");
+
+        return regex.IsMatch(telefon);
+    }
+
+    static DateTime DataNaix()
+>>>>>>> develop
+    {
+        string telefon = "";
+        bool validat = false;
+<<<<<<< HEAD
 
         Console.Write("Introdueix el telefon: ");
         while (!validat)
@@ -360,6 +446,16 @@ do
 
         while (!validat)
         {
+=======
+        int any, mes, dia;
+
+        while (!validat)
+        {
+            any = DateTime.Now.Year + 1;
+            mes = 0;
+            dia = 0;
+
+>>>>>>> develop
             Console.WriteLine("Introdueix la teva data de naixement.");
             Console.Write("Any: ");
             while (any > DateTime.Now.Year)
@@ -372,7 +468,11 @@ do
                     Console.Write("Any: ");
                 }
             }
+<<<<<<< HEAD
             Console.Write("Mes:");
+=======
+            Console.Write("Mes: ");
+>>>>>>> develop
             while (mes > 12 || mes < 1)
             {
                 mes = Convert.ToInt32(Console.ReadLine());
@@ -382,7 +482,11 @@ do
                     Console.Write("Mes: ");
                 }
             }
+<<<<<<< HEAD
             Console.Write("Dia:");
+=======
+            Console.Write("Dia: ");
+>>>>>>> develop
             while (dia > 31 || dia < 1)
             {
                 dia = Convert.ToInt32(Console.ReadLine());
@@ -391,14 +495,22 @@ do
                     if (dia > 31 || dia < 1)
                     {
                         Console.WriteLine("Dia mal introduit hauras d'introduir-ne un altre.");
+<<<<<<< HEAD
                         Console.Write("Dia:");
+=======
+                        Console.Write("Dia: ");
+>>>>>>> develop
                         dia = 0;
                     }
                 }
                 else if (mes == 2 && (dia < 1 || dia > 29))
                 {
                     Console.WriteLine("Dia mal introduit hauras d'introduir-ne un altre.");
+<<<<<<< HEAD
                     Console.Write("Dia:");
+=======
+                    Console.Write("Dia: ");
+>>>>>>> develop
                     dia = 0;
                 }
                 else
@@ -406,7 +518,11 @@ do
                     if (dia < 1 || dia > 30)
                     {
                         Console.WriteLine("Dia mal introduit hauras d'introduir-ne un altre.");
+<<<<<<< HEAD
                         Console.Write("Dia:");
+=======
+                        Console.Write("Dia: ");
+>>>>>>> develop
                         dia = 0;
                     }
                 }
@@ -488,8 +604,12 @@ do
 
     static bool ValidarCorreu(string original)
     {
+<<<<<<< HEAD
         string patron = @"^[a-z0-9]{3,}@[a-z]{3,}\.(com|es)$";
         Regex regex = new Regex(patron);
+=======
+        Regex regex = new Regex(@"^[a-z0-9]{3,}@[a-z]{3,}\.(com|es)$");
+>>>>>>> develop
 
         original = original.ToLower();
 
@@ -522,7 +642,11 @@ do
         StreamReader fitxerSR;
         string liniaFitxer = "", auxiliar;
         bool trobat = false;
+<<<<<<< HEAD
         char decisiu = 'n';
+=======
+        char decisiu;
+>>>>>>> develop
         while (!trobat)
         {
             fitxerSR = new StreamReader("agenda.txt");
@@ -539,14 +663,22 @@ do
                 Console.Clear();
                 Console.WriteLine(Capcelera());
                 Console.WriteLine(CapceleraOpcio(textOpcio));
+<<<<<<< HEAD
                 Console.Write("El nom introduit no esta a l'agenda vols introduir-ne un altre? Introdueix una 's', per introduir-ne un altre i una 'n' per no fer-ho.");
+=======
+                Console.WriteLine("\nEl nom introduit no esta a l'agenda, vols introduir-ne un altre? Introdueix una 'S', per introduir-ne un altre o una 'N' per no fer-ho.");
+>>>>>>> develop
                 decisiu = Console.ReadKey().KeyChar;
                 Console.Clear();
                 Console.WriteLine(Capcelera());
                 Console.WriteLine(CapceleraOpcio(textOpcio));
                 if (decisiu == 's' || decisiu == 'S')
                 {
+<<<<<<< HEAD
                     Console.WriteLine("Nom: ");
+=======
+                    Console.WriteLine("\nNom: ");
+>>>>>>> develop
                     nom = AutocompletarNoms(textOpcio);
                 }
                 else
@@ -558,12 +690,16 @@ do
         }
         return liniaFitxer;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
     static void MostrarElements(string liniaIntroduir, string textOpcio)
     {
         Console.Clear();
         Console.WriteLine(Capcelera());
         Console.WriteLine(CapceleraOpcio(textOpcio));
+<<<<<<< HEAD
         Console.WriteLine("Nom= " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
         liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
         Console.WriteLine("Cognom 1= " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
@@ -577,14 +713,36 @@ do
         Console.WriteLine("Correu electrònic= " + liniaIntroduir);
     }
 
+=======
+        Console.WriteLine("\nNom: " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
+        Console.WriteLine("Primer cognom: " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
+        Console.WriteLine("Segon cognom: " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
+        Console.WriteLine("DNI: " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
+        Console.WriteLine("Telefon: " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
+        Console.WriteLine("Data de naixement: " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
+        Console.WriteLine("Correu electrònic: " + liniaIntroduir);
+    }
+>>>>>>> develop
     static string AutocompletarNoms(string textOpcio)
     {
         StreamReader fitxerSR;
         char caracterActual;
         string nom = "", nomsPossibles = "/", nomLinia;
+<<<<<<< HEAD
         bool igual = true, sortida = false;
         int cont = 0;
         while (nom != nomsPossibles && !sortida)
+=======
+        bool igual, sortida=false;
+        int cont = 0;
+        while (nom != nomsPossibles&&!sortida)
+>>>>>>> develop
         {
             nomsPossibles = "";
             caracterActual = Console.ReadKey().KeyChar;
@@ -604,7 +762,11 @@ do
                 }
                 if (igual)
                 {
+<<<<<<< HEAD
                     nomsPossibles = nomsPossibles + nomLinia + '/';
+=======
+                    nomsPossibles = nomsPossibles + nomLinia+'/';
+>>>>>>> develop
                     cont++;
                 }
             }
@@ -612,14 +774,24 @@ do
             Console.Clear();
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
+<<<<<<< HEAD
             Console.WriteLine("Nom: ");
+=======
+            Console.Write("\nNom: ");
+>>>>>>> develop
             Console.WriteLine(nom);
             if (cont == 0)
             {
                 Console.WriteLine("No coincideix cap nom amb el que s'ha introduit.");
                 sortida = true;
+<<<<<<< HEAD
             }
             else Console.WriteLine("Noms possibles: " + nomsPossibles);
+=======
+                Contador();
+            }
+            else Console.Write("Possibles noms: " + nomsPossibles);
+>>>>>>> develop
             cont = 0;
             if (!sortida)
                 nomsPossibles = nomsPossibles.Substring(0, nomsPossibles.IndexOf('/'));
