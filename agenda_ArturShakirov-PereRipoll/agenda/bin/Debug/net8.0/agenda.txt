@@ -1,4 +1,4 @@
-Pera,Ripoll,Luque,41581028H,672388754,18/12/1997,pereriluq@gmail.com
+Pera,Ripollet,Luque,41581028H,672388754,18/12/1997,pereriluq@gmail.com
 Pere,Ripoll,Luque,41581028H,672364854,18/12/1997,pereriluq@gmail.com
 Pere,Ripoll,Luque,41581028H,615354753,18/12/1997,pereriluq@gmail.com
 Periku,Ripoll,Luque,41581028H,623475735,12/12/2005,arturiussicarius@gmail.com
@@ -9,3 +9,4 @@ Joan,Petit,Petit,41581028H,673784523,03/12/1992,joangranpetit@gmail.com
 Tomas,Monte,Fuster,41581028H,653554372,25/11/1978,tomasmontefuster@gmail.com
 Manel,Ferrer,Serrat,41581028H,608827630,24/11/1967,manelferrerserrat@gmail.com
 D,D,,41581028H,437658364,12/12/2023,arturshakirov@gmail.com
+
