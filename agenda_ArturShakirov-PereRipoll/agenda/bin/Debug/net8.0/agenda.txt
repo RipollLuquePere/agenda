@@ -1,3 +1,6 @@
-Pera,Ripoll,Luque,41581028H,605121091,18/12/1997,pereriluq@gmail.com
-Manel,Romer,Baena,41581028H,654987321,22/12/1999,jjj@gmail.com
+Josep,Anton,Lleidda,41581028H,654987321,12/12/1999,ppp@gmail.com
 Genis,Bayes,Costa,41581028H,123456789,12/12/1999,kkk@gmail.com
+Ana,Garriga,Garriguella,41581028H,605121091,12/12/1999,ppp@gmail.com
+Pera,Ripoll,Luque,41581028H,605121091,18/12/1997,pereriluq@gmail.com
+Francesc,Roma,Castells,41581028H,654987321,12/12/1999,ppp@gmail.com
+Manel,Romer,Baena,41581028H,654987321,22/12/1999,jjj@gmail.com
