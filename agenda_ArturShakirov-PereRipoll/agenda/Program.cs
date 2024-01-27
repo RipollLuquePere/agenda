@@ -74,7 +74,7 @@ do
                 liniaIntroduir = liniaFitxer;
                 MostrarElements(liniaIntroduir, textOpcio);
                 DadaModificar(liniaFitxer, opcioNoms);
-            }          
+            }
             Contador();
             break;
         case '4':
@@ -830,7 +830,7 @@ do
         fitxerSR = new StreamReader("agenda.txt");
         liniaEscriure = fitxerSR.ReadLine();
         for (int i = 0; !fitxerSR.EndOfStream; i++)
-        {           
+        {
             if (auxiliar != i)
                 liniaTotal = liniaTotal + liniaEscriure;
             else liniaTotal = liniaTotal + liniaFitxer;
@@ -911,24 +911,24 @@ do
         Console.WriteLine("Fitxer ordenat correctament!");
     }
 
-    static void EliminarUsuari (string liniaFitxer)
+    static void EliminarUsuari(string liniaFitxer)
     {
         StreamReader fitxerSR;
         StreamWriter fitxerSW;
-        string liniaEscriure, textFitxer="", auxiliar;
+        string liniaEscriure, textFitxer = "", auxiliar;
         fitxerSR = new StreamReader("agenda.txt");
         liniaEscriure = fitxerSR.ReadLine();
         while (!fitxerSR.EndOfStream)
         {
             auxiliar = liniaEscriure;
-            if (liniaFitxer!=liniaEscriure)
+            if (liniaFitxer != liniaEscriure)
                 textFitxer = textFitxer + liniaEscriure;
             liniaEscriure = fitxerSR.ReadLine();
-            if (liniaEscriure != ""&&liniaEscriure!=liniaFitxer)
+            if (liniaEscriure != "" && liniaEscriure != liniaFitxer)
                 textFitxer = textFitxer + "\n";
         }
         if (liniaEscriure != "" && liniaEscriure != liniaFitxer)
-            textFitxer = textFitxer + liniaEscriure+'\n';
+            textFitxer = textFitxer + liniaEscriure + '\n';
         fitxerSR.Close();
         fitxerSW = new StreamWriter("agenda.txt");
         fitxerSW.Write(textFitxer);
