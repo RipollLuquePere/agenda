@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Pera,Ripollet,Luque,41581028H,672388754,18/12/1997,pereriluq@gmail.com
 Pere,Ripoll,Luque,41581028H,672364854,18/12/1997,pereriluq@gmail.com
 Pere,Ripoll,Luque,41581028H,615354753,18/12/1997,pereriluq@gmail.com
@@ -10,3 +11,13 @@ Tomas,Monte,Fuster,41581028H,653554372,25/11/1978,tomasmontefuster@gmail.com
 Manel,Ferrer,Serrat,41581028H,608827630,24/11/1967,manelferrerserrat@gmail.com
 D,D,,41581028H,437658364,12/12/2023,arturshakirov@gmail.com
 
+=======
+Andrea,Beltran,Valls,23767868J,612573893,01/01/2000,andrebeltvalls@yahoo.es
+Monica,Benavent,Llado,78928471S,612368374,18/08/2004,monbenllado@gmail.com
+Daniel,Gutierrez,Munoz,76367564C,687384821,07/05/1993,daniguti@yahoo.es
+Kyllian,Mbappe,,93864872D,679383241,15/12/1999,kyllianmbappe@psg.com
+Pedro,Porsu,Casa,17826284L,691928743,21/09/2001,pedroporsucasa@gmail.com
+Pere,Ripoll,Luque,41581028H,612738439,18/12/1997,pereripluq@gmail.com
+Andreu,Salinas,Oliveras,61263410N,637834215,20/06/2005,andreusaloli@gmail.com
+Artur,Shakirov,,83273857B,676881557,12/12/2005,arturiussicarius@gmail.com
+>>>>>>> 305b62215c48627948514a67f412455400f08ac0
