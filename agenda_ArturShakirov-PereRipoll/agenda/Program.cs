@@ -1,6 +1,10 @@
 using System.Text.RegularExpressions;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+double edat;
+>>>>>>> c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b
 bool sortir = false;
 char opcio, caracterDecisio;
 =======
@@ -93,10 +97,14 @@ do
                 MostrarElements(liniaIntroduir, textOpcio);
                 DadaModificar(liniaFitxer, opcioNoms);
 <<<<<<< HEAD
+<<<<<<< HEAD
             }          
 =======
             }
 >>>>>>> 305b62215c48627948514a67f412455400f08ac0
+=======
+            }
+>>>>>>> c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b
             Contador();
             break;
         case '4':
@@ -128,12 +136,17 @@ do
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
 <<<<<<< HEAD
+<<<<<<< HEAD
             MostrarContingut();
             Contador();
 =======
             MostrarAgenda();
             PremeuPerTornar();
 >>>>>>> 305b62215c48627948514a67f412455400f08ac0
+=======
+            MostrarAgenda();
+            PremeuPerTornar();
+>>>>>>> c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b
             break;
         case '6':
             textOpcio = "Ordenar agenda.";
@@ -141,11 +154,16 @@ do
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
 <<<<<<< HEAD
+<<<<<<< HEAD
             Contador();
 =======
             OrdenarAgenda();
             PremeuPerTornar();
 >>>>>>> 305b62215c48627948514a67f412455400f08ac0
+=======
+            OrdenarAgenda();
+            PremeuPerTornar();
+>>>>>>> c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b
             break;
     }
 
@@ -155,10 +173,14 @@ do
 
         Console.WriteLine(Capcelera());
 <<<<<<< HEAD
+<<<<<<< HEAD
         menu = "\x1b[43m\x1b[30m╔════════════════════════════════╗\n" +
 =======
         menu = "\x1b[47m\x1b[30m╔════════════════════════════════╗\n" +
 >>>>>>> 305b62215c48627948514a67f412455400f08ac0
+=======
+        menu = "\x1b[47m\x1b[30m╔════════════════════════════════╗\n" +
+>>>>>>> c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b
                "║                                ║\n" +
                "║     1. Donar d'alta usuari     ║\n" +
                "║     ----------------------     ║\n" +
@@ -186,7 +208,11 @@ do
         string capcelera;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         capcelera = "\x1b[43m\x1b[30m╔════════════════════════════════╗\n" +
+=======
+        capcelera = "\x1b[47m\x1b[30m╔════════════════════════════════╗\n" +
+>>>>>>> c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b
                     "║         \x1b[31mAGENDA\x1b[30m                 ║\n" +
 =======
         capcelera = "\x1b[47m\x1b[30m╔════════════════════════════════╗\n" +
@@ -227,6 +253,15 @@ do
             Console.Write("Temps per tornar al menú: " + contador + "\r");
             contador--;
         }
+    }
+
+    static void PremeuPerTornar()
+    {
+        char opcio;
+
+        Console.Write("\nPremeu qualsevol tecla per tornar al menú: ");
+
+        opcio = Console.ReadKey().KeyChar;
     }
 
     static string DemanarNoms(string opcioNoms)
@@ -624,17 +659,78 @@ do
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     static void MostrarContingut()
+=======
+    static void MostrarAgenda()
+>>>>>>> c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b
     {
-        string linia;
+        int linies = 0;
+        string linia, nom, cognom1, cognom2, telefon, resumDadesMesGran = "zzzzz", resumDadesMesGranAnterior = "aaaaa", resumDades = "", liniaAuxiliar = "";
 
-        StreamReader fitxerSW = new StreamReader("agenda.txt");
+        StreamReader fitxerSR = new StreamReader("agenda.txt");
         Console.WriteLine("");
-        while (!fitxerSW.EndOfStream)
+
+        while (!fitxerSR.EndOfStream)
         {
-            linia = fitxerSW.ReadLine();
-            Console.WriteLine(linia);
+            linies++;
+            linia = fitxerSR.ReadLine();
         }
+        fitxerSR.Close();
+
+        while (linies > 0)
+        {
+            StreamReader fitxerSR2 = new StreamReader("agenda.txt");
+            while (!fitxerSR2.EndOfStream)
+            {
+                linia = fitxerSR2.ReadLine();
+
+                if (linia != "")
+                {
+                    nom = linia.Substring(0, linia.IndexOf(","));
+                    linia = linia.Substring(linia.IndexOf(",") + 1);
+                    cognom1 = linia.Substring(0, linia.IndexOf(","));
+                    linia = linia.Substring(linia.IndexOf(",") + 1);
+                    cognom2 = linia.Substring(0, linia.IndexOf(","));
+                    linia = linia.Substring(linia.IndexOf(",") + 1);
+                    linia = linia.Substring(linia.IndexOf(",") + 1);
+                    telefon = linia.Substring(0, linia.IndexOf(","));
+
+                    resumDades = cognom1 + "," + cognom2 + "," + nom + "," + telefon;
+
+                    if (resumDadesMesGran == resumDades)
+                    {
+                        linies--;
+                    }
+
+                    if (resumDades.CompareTo(resumDadesMesGran) < 0 && resumDades.CompareTo(resumDadesMesGranAnterior) > 0)
+                    {
+                        resumDadesMesGran = resumDades;
+                        liniaAuxiliar = resumDadesMesGran;
+                    }
+                }
+            }
+            fitxerSR2.Close();
+
+            cognom1 = liniaAuxiliar.Substring(0, liniaAuxiliar.IndexOf(","));
+            liniaAuxiliar = liniaAuxiliar.Substring(liniaAuxiliar.IndexOf(",") + 1);
+            cognom2 = liniaAuxiliar.Substring(0, liniaAuxiliar.IndexOf(","));
+            liniaAuxiliar = liniaAuxiliar.Substring(liniaAuxiliar.IndexOf(",") + 1);
+            nom = liniaAuxiliar.Substring(0, liniaAuxiliar.IndexOf(","));
+            liniaAuxiliar = liniaAuxiliar.Substring(liniaAuxiliar.IndexOf(",") + 1);
+            telefon = liniaAuxiliar;
+
+            if (cognom2 == "")
+                cognom2 = "---";
+
+            Console.WriteLine(cognom1 + " " + cognom2 + ", " + nom + " | " + telefon);
+
+            resumDadesMesGranAnterior = resumDadesMesGran;
+            resumDadesMesGran = "zzzzz";
+
+            linies--;
+        }
+<<<<<<< HEAD
         fitxerSW.Close();
 =======
     static void MostrarAgenda()
@@ -705,6 +801,8 @@ do
             linies--;
         }
 >>>>>>> 305b62215c48627948514a67f412455400f08ac0
+=======
+>>>>>>> c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b
     }
 
     static string BuscarLiniaFitxer(string nom, string opcioNoms, string textOpcio)
@@ -757,6 +855,11 @@ do
         return liniaFitxer;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b
     static void MostrarElements(string liniaIntroduir, string textOpcio)
     {
 =======
@@ -786,6 +889,7 @@ do
         liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
         Console.WriteLine("Correu electrònic: " + liniaIntroduir);
     }
+<<<<<<< HEAD
 =======
         dataNaix = Convert.ToDateTime(liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
         edat = CalcularEdat(dataNaix);
@@ -796,6 +900,10 @@ do
 
 
 >>>>>>> 305b62215c48627948514a67f412455400f08ac0
+=======
+
+
+>>>>>>> c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b
     static string AutocompletarNoms(string textOpcio)
     {
         StreamReader fitxerSR;
@@ -859,9 +967,13 @@ do
         return nom;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 305b62215c48627948514a67f412455400f08ac0
+=======
+
+>>>>>>> c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b
     static void DadaModificar(string liniaFitxer, string opcioNoms)
     {
         StreamReader fitxerSR;
@@ -994,9 +1106,13 @@ do
         EntrarModificacions(auxiliar, liniaFitxer);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 305b62215c48627948514a67f412455400f08ac0
+=======
+
+>>>>>>> c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b
     static void EntrarModificacions(int auxiliar, string liniaFitxer)
     {
         StreamReader fitxerSR;
@@ -1007,7 +1123,7 @@ do
 <<<<<<< HEAD
         liniaEscriure = fitxerSR.ReadLine();
         for (int i = 0; !fitxerSR.EndOfStream; i++)
-        {           
+        {
             if (auxiliar != i)
                 liniaTotal = liniaTotal + liniaEscriure;
             else liniaTotal = liniaTotal + liniaFitxer;
@@ -1022,24 +1138,90 @@ do
         fitxerSW.WriteLine(liniaTotal);
         fitxerSW.Close();
     }
-    static void EliminarUsuari (string liniaFitxer)
+
+    static void OrdenarAgenda()
+    {
+        int linies = 0;
+        string linia, nom, cognom1, cognom2, telefon, resumDadesMesGran = "zzzzz", resumDadesMesGranAnterior = "aaaaa", resumDades = "", liniaAuxiliar = "", fitxerOrdenat = "", liniaMesGran = "";
+
+        StreamReader fitxerSR = new StreamReader("agenda.txt");
+        Console.WriteLine("");
+
+        while (!fitxerSR.EndOfStream)
+        {
+            linies++;
+            linia = fitxerSR.ReadLine();
+        }
+        fitxerSR.Close();
+
+        while (linies > 0)
+        {
+            StreamReader fitxerSR2 = new StreamReader("agenda.txt");
+            while (!fitxerSR2.EndOfStream)
+            {
+                linia = fitxerSR2.ReadLine();
+
+                if (linia != "")
+                {
+                    liniaAuxiliar = linia;
+
+                    nom = liniaAuxiliar.Substring(0, liniaAuxiliar.IndexOf(","));
+                    liniaAuxiliar = liniaAuxiliar.Substring(liniaAuxiliar.IndexOf(",") + 1);
+                    cognom1 = liniaAuxiliar.Substring(0, liniaAuxiliar.IndexOf(","));
+                    liniaAuxiliar = liniaAuxiliar.Substring(liniaAuxiliar.IndexOf(",") + 1);
+                    cognom2 = liniaAuxiliar.Substring(0, liniaAuxiliar.IndexOf(","));
+                    liniaAuxiliar = liniaAuxiliar.Substring(liniaAuxiliar.IndexOf(",") + 1);
+                    liniaAuxiliar = liniaAuxiliar.Substring(liniaAuxiliar.IndexOf(",") + 1);
+                    telefon = liniaAuxiliar.Substring(0, liniaAuxiliar.IndexOf(","));
+
+                    resumDades = cognom1 + "," + cognom2 + "," + nom + "," + telefon;
+
+                    if (resumDadesMesGran == resumDades)
+                    {
+                        linies--;
+                    }
+
+                    if (resumDades.CompareTo(resumDadesMesGran) < 0 && resumDades.CompareTo(resumDadesMesGranAnterior) > 0)
+                    {
+                        resumDadesMesGran = resumDades;
+                        liniaMesGran = linia;
+                    }
+                }
+            }
+            fitxerSR2.Close();
+
+            fitxerOrdenat = fitxerOrdenat + liniaMesGran + "\n";
+
+            resumDadesMesGranAnterior = resumDadesMesGran;
+            resumDadesMesGran = "zzzzz";
+
+            linies--;
+        }
+
+        StreamWriter fitxerSW = new StreamWriter("agenda.txt");
+        fitxerSW.Write(fitxerOrdenat);
+        fitxerSW.Close();
+        Console.WriteLine("Fitxer ordenat correctament!");
+    }
+
+    static void EliminarUsuari(string liniaFitxer)
     {
         StreamReader fitxerSR;
         StreamWriter fitxerSW;
-        string liniaEscriure, textFitxer="", auxiliar;
+        string liniaEscriure, textFitxer = "", auxiliar;
         fitxerSR = new StreamReader("agenda.txt");
         liniaEscriure = fitxerSR.ReadLine();
         while (!fitxerSR.EndOfStream)
         {
             auxiliar = liniaEscriure;
-            if (liniaFitxer!=liniaEscriure)
+            if (liniaFitxer != liniaEscriure)
                 textFitxer = textFitxer + liniaEscriure;
             liniaEscriure = fitxerSR.ReadLine();
-            if (liniaEscriure != ""&&liniaEscriure!=liniaFitxer)
+            if (liniaEscriure != "" && liniaEscriure != liniaFitxer)
                 textFitxer = textFitxer + "\n";
         }
         if (liniaEscriure != "" && liniaEscriure != liniaFitxer)
-            textFitxer = textFitxer + liniaEscriure+'\n';
+            textFitxer = textFitxer + liniaEscriure + '\n';
         fitxerSR.Close();
         fitxerSW = new StreamWriter("agenda.txt");
         fitxerSW.Write(textFitxer);
