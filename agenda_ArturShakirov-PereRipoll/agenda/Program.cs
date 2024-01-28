@@ -90,11 +90,11 @@ do
             {
                 liniaIntroduir = liniaFitxer;
                 MostrarElements(liniaIntroduir, textOpcio);
+                Console.WriteLine("\nEstas segur d'eliminar l'usuari que es mostra en pantalla? (s/n):");
+                caracterDecisio = Console.ReadKey().KeyChar;
+                if (caracterDecisio == 's' || caracterDecisio == 'S')
+                    EliminarUsuari(liniaFitxer);
             }
-            Console.WriteLine("\nEstas segur d'eliminar l'usuari que es mostra en pantalla? (s/n):");
-            caracterDecisio = Console.ReadKey().KeyChar;
-            if (caracterDecisio == 's' || caracterDecisio == 'S')
-                EliminarUsuari(liniaFitxer);
             Contador();
             break;
         case '5':
@@ -260,85 +260,12 @@ do
         int numDNI;
         char lletraIntroduida, lletraCorrecte = 'Z';
         bool validat = false;
+        string comprovadors = "TRWAGMYFPDXBNJZSQVHLCKE";
         lletraIntroduida = DNI[DNI.Length - 1];
         numDNI = Convert.ToInt32(DNI.Substring(0, DNI.Length - 1));
         numDNI = numDNI % 23;
-        switch (numDNI)
-        {
-            case 0:
-                lletraCorrecte = 'T';
-                break;
-            case 1:
-                lletraCorrecte = 'R';
-                break;
-            case 2:
-                lletraCorrecte = 'W';
-                break;
-            case 3:
-                lletraCorrecte = 'A';
-                break;
-            case 4:
-                lletraCorrecte = 'G';
-                break;
-            case 5:
-                lletraCorrecte = 'M';
-                break;
-            case 6:
-                lletraCorrecte = 'Y';
-                break;
-            case 7:
-                lletraCorrecte = 'F';
-                break;
-            case 8:
-                lletraCorrecte = 'P';
-                break;
-            case 9:
-                lletraCorrecte = 'D';
-                break;
-            case 10:
-                lletraCorrecte = 'X';
-                break;
-            case 11:
-                lletraCorrecte = 'B';
-                break;
-            case 12:
-                lletraCorrecte = 'N';
-                break;
-            case 13:
-                lletraCorrecte = 'J';
-                break;
-            case 14:
-                lletraCorrecte = 'Z';
-                break;
-            case 15:
-                lletraCorrecte = 'S';
-                break;
-            case 16:
-                lletraCorrecte = 'Q';
-                break;
-            case 17:
-                lletraCorrecte = 'V';
-                break;
-            case 18:
-                lletraCorrecte = 'H';
-                break;
-            case 19:
-                lletraCorrecte = 'L';
-                break;
-            case 20:
-                lletraCorrecte = 'C';
-                break;
-            case 21:
-                lletraCorrecte = 'K';
-                break;
-            case 22:
-                lletraCorrecte = 'E';
-                break;
-        }
-        if (lletraCorrecte == lletraIntroduida)
-        {
+        if (comprovadors[numDNI] == lletraIntroduida)
             validat = true;
-        }
         return validat;
     }
 
@@ -467,33 +394,13 @@ do
         dia = dataNaix.Day;
         if (DateTime.IsLeapYear(any) == true)
         {
-            if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12)
-            {
-                if (dia > 31 || dia < 1)
-                    valid = false;
-            }
-            else if (mes == 2 && (dia < 1 || dia > 29))
+            if (mes == 2 && (dia < 1 || dia > 29))
                 valid = false;
-            else
-            {
-                if (dia < 1 || dia > 30)
-                    valid = false;
-            }
         }
         else
         {
-            if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12)
-            {
-                if (dia > 31 || dia < 1)
-                    valid = false;
-            }
-            else if (mes == 2 && (dia > 28 || dia < 1))
+            if (mes == 2 && (dia > 28 || dia < 1))
                 valid = false;
-            else
-            {
-                if (dia < 1 || dia > 30)
-                    valid = false;
-            }
         }
         if (dataNaix > DateTime.Now)
         {
@@ -649,6 +556,9 @@ do
 
     static void MostrarElements(string liniaIntroduir, string textOpcio)
     {
+        double edat;
+        DateTime dataNaix;
+
         Console.Clear();
         Console.WriteLine(Capcelera());
         Console.WriteLine(CapceleraOpcio(textOpcio));
@@ -662,7 +572,9 @@ do
         liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
         Console.WriteLine("Telefon: " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
         liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
-        Console.WriteLine("Data de naixement: " + liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        dataNaix = Convert.ToDateTime(liniaIntroduir.Substring(0, liniaIntroduir.IndexOf(',')));
+        edat = CalcularEdat(dataNaix);
+        Console.WriteLine("Data de naixement: " + dataNaix.ToString("d") + ", " + edat + " anys");
         liniaIntroduir = liniaIntroduir.Substring(liniaIntroduir.IndexOf(',') + 1);
         Console.WriteLine("Correu electrònic: " + liniaIntroduir);
     }
@@ -794,7 +706,6 @@ do
             }
             else Console.WriteLine("La opcio introduida no correspon a cap dada, introdueix-ne una altre que sigui correcte.");
         }
-        Console.WriteLine(liniaFitxer);
         liniaFitxer = "";
         for (int i = 0; liniaAuxiliar.Contains('@'); i++)
         {
@@ -825,15 +736,24 @@ do
     {
         StreamReader fitxerSR;
         StreamWriter fitxerSW;
-        Console.WriteLine(auxiliar);
-        string liniaEscriure = "", liniaTotal = "";
+        bool trobat = false;
+        int cont;
+        string liniaEscriure = "", liniaTotal = "", ultimaIntroduida = "";
         fitxerSR = new StreamReader("agenda.txt");
         liniaEscriure = fitxerSR.ReadLine();
-        for (int i = 0; !fitxerSR.EndOfStream; i++)
+        for (int i = 0; !fitxerSR.EndOfStream||!trobat; i++)
         {
             if (auxiliar != i)
+            {
                 liniaTotal = liniaTotal + liniaEscriure;
-            else liniaTotal = liniaTotal + liniaFitxer;
+                ultimaIntroduida = liniaEscriure;
+            }
+            else
+            {
+                liniaTotal = liniaTotal + liniaFitxer;
+                trobat = true;
+                ultimaIntroduida = liniaFitxer;
+            }
             liniaEscriure = fitxerSR.ReadLine();
             if (liniaEscriure != "")
                 liniaTotal = liniaTotal + '\n';
@@ -842,7 +762,9 @@ do
             liniaTotal = liniaTotal + liniaEscriure;
         fitxerSR.Close();
         fitxerSW = new StreamWriter("agenda.txt");
-        fitxerSW.WriteLine(liniaTotal);
+        if (ultimaIntroduida == liniaFitxer)
+            fitxerSW.Write(liniaTotal);
+        else fitxerSW.WriteLine(liniaTotal);
         fitxerSW.Close();
     }
 
@@ -905,7 +827,7 @@ do
             linies--;
         }
 
-        StreamWriter fitxerSW = new StreamWriter("agenda.txt");
+        StreamWriter fitxerSW = new StreamWriter("agendaOrdenada.txt");
         fitxerSW.Write(fitxerOrdenat);
         fitxerSW.Close();
         Console.WriteLine("Fitxer ordenat correctament!");
@@ -924,7 +846,7 @@ do
             if (liniaFitxer != liniaEscriure)
                 textFitxer = textFitxer + liniaEscriure;
             liniaEscriure = fitxerSR.ReadLine();
-            if (liniaEscriure != "" && liniaEscriure != liniaFitxer)
+            if (liniaEscriure != "" && auxiliar != liniaFitxer)
                 textFitxer = textFitxer + "\n";
         }
         if (liniaEscriure != "" && liniaEscriure != liniaFitxer)
