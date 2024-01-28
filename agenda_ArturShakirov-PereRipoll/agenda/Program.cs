@@ -98,7 +98,7 @@ do
             Console.WriteLine(Capcelera());
             Console.WriteLine(CapceleraOpcio(textOpcio));
             OrdenarAgenda();
-            PremeuPerTornar();
+            Contador();
             break;
     }
 
