@@ -1,6 +1,10 @@
-Josep,Anton,Lleidda,41581028H,654987321,12/12/1999,ppp@gmail.com
-Genis,Bayes,Costa,41581028H,123456789,12/12/1999,kkk@gmail.com
-Ana,Garriga,Garriguella,41581028H,605121091,12/12/1999,ppp@gmail.com
-Pera,Ripoll,Luque,41581028H,605121091,18/12/1997,pereriluq@gmail.com
-Francesc,Roma,Castells,41581028H,654987321,12/12/1999,ppp@gmail.com
+Toni,Busquets,Punset,41581028H,654987321,12/12/1999,ppp@gmail.com
 Manel,Romer,Baena,41581028H,654987321,22/12/1999,jjj@gmail.com
+Artur,Shakirov,,41581028H,111111111,12/12/1999,111111111@gmail.com
+Francesc,Castell,Costa,41581028H,123456789,12/12/1999,1111@gmail.com
+Pere,Ripoll,Luque,41581028H,654987321,12/12/1999,llll@gmail.com
+Albert,Lopez,Serra,41581028H,123456789,12/12/1999,ppp@gmail.com
+Joan,Gallart,Rossell,41581028H,123456789,12/12/1999,123@gmail.com
+Ana,Valls,Valls,41581028H,123456789,12/12/1999,1234@gmail.com
+Ricard,Fauria,Robert,41581028H,123456789,30/11/2020,123456@gmail.com
+Joana,Ferrer,Llora,41581028H,123456789,31/12/2020,123456@gmail.com
