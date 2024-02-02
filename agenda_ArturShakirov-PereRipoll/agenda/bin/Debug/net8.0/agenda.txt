@@ -4,6 +4,8 @@ Ricard,Fauria,Robert,41581028H,123456789,30/11/2020,123456@gmail.com
 Joana,Ferrer,Llora,41581028H,123456789,31/12/2020,123456@gmail.com
 Joan,Gallart,Rossell,41581028H,123456789,12/12/1999,123@gmail.com
 Albert,Lopez,Serra,41581028H,123456789,12/12/1999,ppp@gmail.com
-Pere,Ripoll,Luque,41581028H,654987321,12/12/1999,pereripluq@gmail.com
+Pere,Ripoll,Luque,41581028H,654987321,12/12/1999,llll@gmail.com
 Manel,Romer,Baena,41581028H,654987321,22/12/1999,jjj@gmail.com
-Artur,Shakirov,,88273857H,676881557,12/12/2005,arturshakirov@gmail.com
+Artur,Shakirov,,41581028H,111111111,12/12/1999,111111111@gmail.com
+Ana,Valls,Valls,41581028H,123456789,12/12/1999,1234@gmail.com
+Kike,Gimenez,Toledo,12345678Z,612557653,25/04/1991,kikegimtol@gobierno.es
