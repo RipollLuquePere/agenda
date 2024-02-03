@@ -15,10 +15,14 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6965c70efe7ab826eb134b5a08621511c9453e2a")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c6a1fcd23f500f78d1d71305d6141d7bb8a47c5b")]
 >>>>>>> 7f3d6956d04f8b4c67b0908be9f007404026768e
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8953d3d25f99b111f56b2c2a5c5304d54751fe1d")]
+>>>>>>> 8bb77129eac105f0fa7ea8dafdce2780484190e7
 [assembly: System.Reflection.AssemblyProductAttribute("agenda")]
 [assembly: System.Reflection.AssemblyTitleAttribute("agenda")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
